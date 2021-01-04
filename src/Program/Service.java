@@ -1,9 +1,9 @@
 package Program;
 
+import SystemFiles.Colors;
 import SystemFiles.Film.Film;
-import Utils.ArrayUtils;
+import SystemFiles.Strings;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -13,21 +13,28 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Service {
-    private static String fileName = "src/SystemFiles/Film/Films";
-    public static String addFilm (Film film) throws FileNotFoundException {
-        Film[] films = readFilmsFromFile(fileName);
+    private Strings s;
+    private Colors c;
+
+    public Service(Strings s, Colors c) {
+        this.s = s;
+        this.c = c;
+    }
+
+    public String addFilm (Film film) throws FileNotFoundException {
+        Film[] films = readFilmsFromFile(s.file(0));
         int n = filmArrayContainsFilm(films, film);
         if (n == -1) {
             Film[] updatedFilms = Arrays.copyOf(films, films.length + 1);
             updatedFilms[updatedFilms.length - 1] = film;
-            writeFilmsToFile(fileName, updatedFilms);
-            return "Сохранено";
+            writeFilmsToFile(s.file(0), updatedFilms);
+            return s.save(0);
         } else {
-            return "Такой фильм уже есть";
+            return s.save(2);
         }
     }
 
-    private static int filmArrayContainsFilm(Film[] array, Film film) {
+    private int filmArrayContainsFilm(Film[] array, Film film) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].getName().equals(film.getName())) {
                 return i;
@@ -36,7 +43,7 @@ public class Service {
         return -1;
     }
 
-    public static void writeFilmsToFile(String fileName, Film[] films) throws FileNotFoundException {
+    public void writeFilmsToFile(String fileName, Film[] films) throws FileNotFoundException {
         String[] s = new String[films.length];
         for (int i = 0; i < films.length; i++) {
             s[i] = films[i].toString();
@@ -44,14 +51,14 @@ public class Service {
         writeArrayToFile(fileName, s);
     }
 
-    public static void writeArrayToFile(String fileName, String[] arr)
+    public void writeArrayToFile(String fileName, String[] arr)
             throws FileNotFoundException {
         try (PrintWriter out = new PrintWriter(fileName)) {
             out.println(stringArrayToString(arr));
         }
     }
 
-    public static Film[] readFilmsFromFile(String fileName) {
+    public Film[] readFilmsFromFile(String fileName) {
         List<Film> lines = null;
         try (Scanner scanner = new Scanner(new File(fileName), "UTF-8")) {
             lines = new ArrayList<>();
@@ -64,7 +71,7 @@ public class Service {
         return lines.toArray(new Film[0]);
     }
 
-    public static String stringArrayToString(String[] a) {
+    public String stringArrayToString(String[] a) {
         String s = "";
         for (int i = 0; i < a.length; i++) {
             s += a[i] + "\n";
@@ -72,7 +79,7 @@ public class Service {
         return s;
     }
 
-    public static String[] readLinesFromFile(String fileName) {
+    public String[] readLinesFromFile(String fileName) {
         List<String> lines = null;
         try (Scanner scanner = new Scanner(new File(fileName), "UTF-8")) {
             lines = new ArrayList<>();
@@ -85,8 +92,8 @@ public class Service {
         return lines.toArray(new String[0]);
     }
 
-    public static Film[] searchFilms(String filmName, String genre, boolean isLooked, String feel) {
-        Film[] films = readFilmsFromFile(fileName);
+    public Film[] searchFilms(String filmName, String genre, boolean isLooked, String feel) {
+        Film[] films = readFilmsFromFile(s.file(0));
         List<List<Film>> searchedFilms = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             List<Film> list = new ArrayList<>();
@@ -97,7 +104,7 @@ public class Service {
             if (films[i].getName().equals(filmName) && filmName != null) {
                 n++;
             }
-            if (films[i].getGenre().equals(genre) && !genre.equals("null")) {
+            if (films[i].getGenre().equals(genre) && !genre.equals(s.none())) {
                 n++;
             }
             if (films[i].isLooked() == isLooked) {
@@ -115,7 +122,7 @@ public class Service {
         return filmListToFilmArray(filmsTable);
     }
 
-    public static Film[] filmListToFilmArray(List<Film> list) {
+    public Film[] filmListToFilmArray(List<Film> list) {
         Film[] array = new Film[list.size()];
         for (int i = 0; i < array.length; i++) {
             array[i] = list.get(i);
@@ -123,7 +130,7 @@ public class Service {
         return array;
     }
 
-    public static String[] filmArrayToStringArrayForFile(Film[] film) {
+    public String[] filmArrayToStringArrayForFile(Film[] film) {
         String[] string = new String[film.length];
         for (int i = 0; i < film.length; i++) {
             string[i] = film[i].toString();
@@ -131,13 +138,11 @@ public class Service {
         return string;
     }
 
-    public static String[][] filmArrayToVerticalStringArrayForJTable(Film[] film) {
-        String[][] string = new String[film.length][1];
-        for (int i = 0; i < film.length; i++) {
-            string[i][0] = film[i].toStringForJTable();
+    public String[][] filmArrayToStringMatrix(Film[] films) {
+        String[][] s = new String[films.length][4];
+        for (int i = 0; i < films.length; i++) {
+            s[i] = films[i].toStringArray();
         }
-        return string;
+        return s;
     }
-
-
 }

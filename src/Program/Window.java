@@ -1,6 +1,8 @@
 package Program;
 
+import SystemFiles.Colors;
 import SystemFiles.Film.Film;
+import SystemFiles.Strings;
 import Utils.JTableUtils;
 
 import javax.swing.*;
@@ -11,57 +13,77 @@ import java.io.FileNotFoundException;
 
 public class Window extends JFrame{
     private JTabbedPane menu;
-    private JPanel contentPanel;
-    private JPanel addFilm;
+    private JPanel mainPanel;
+    private JPanel filmContentPanel;
     private JPanel serialsPanel;
     private JPanel filmsPanel;
     private JPanel booksPanel;
-    private JTextField filmName;
-    private JComboBox filmFeel;
-    private JRadioButton filmIsLookedRButton;
+    private JTextField filmNameTextField;
+    private JComboBox filmFeelBox;
+    private JRadioButton filmLookedRButton;
     private JButton filmSaveButton;
-    private JLabel saveCompleted;
+    private JLabel filmWriteLabel;
     private JComboBox filmGenreBox;
-    private JLabel feelLabel;
+    private JLabel filmFeelLabel;
     private JTable searchedFilms;
     private JButton filmSearchButton;
     private JPanel searchPanel;
+    private JPanel filmDataPanel;
+    private JPanel filmAddDataPanel;
+    private JPanel filmButtonsPanel;
+    private JPanel filmWritePanel;
+    private JPanel filmSearchedPanel;
+    private JLabel filmNameLabel;
+    private JLabel filmGenreLabel;
+    private JLabel filmLookedLabel;
+
+    private Strings s = new Strings();
+    private Colors c = new Colors();
+    private Service service = new Service(s, c);
 
     public Window() {
-        this.setTitle("FBS");
-        this.setContentPane(contentPanel);
+        this.setTitle(s.title());
+        this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+
+
 
         filmSaveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchedFilms.setVisible(false);
-                searchPanel.setVisible(false);
-                saveCompleted.setVisible(true);
+                setFilmSearch(false);
 
-                String name = filmName.getText();
-                String genre = (String) (filmGenreBox.getSelectedItem().equals("Выбрать...") ? "null" : filmGenreBox.getSelectedItem());
-                boolean isLooked = filmIsLookedRButton.isSelected();
-                String feel = (String) (filmFeel.getSelectedItem().equals("Выбрать...") ? "null" : filmFeel.getSelectedItem());
+                String name = filmNameTextField.getText();
+                String genre = (String) (filmGenreBox.getSelectedItem().equals(s.genre(0)) ? s.none() : filmGenreBox.getSelectedItem());
+                boolean isLooked = filmLookedRButton.isSelected();
+                String feel = (String) (filmFeelBox.getSelectedItem().equals(s.feel(0)) ? s.none() : filmFeelBox.getSelectedItem());
 
                 Film newFilm = null;
                 if (!name.isEmpty()) {
                     if (isLooked) {
                         newFilm = new Film(name, genre, true, feel);
                     } else {
-                        newFilm = new Film(name, genre, false, "null");
+                        newFilm = new Film(name, genre, false, s.none());
                     }
                 }
                 if (newFilm != null) {
                     try {
-                        String text = Service.addFilm(newFilm);
-                        saveCompleted.setText(text);
+                        String text = service.addFilm(newFilm);
+                        filmWriteLabel.setText(text);
+                        Color filmWriteColor;
+                        if (text.equals(s.save(0))) {
+                            filmWriteColor = c.background(2);
+                        } else {
+                            filmWriteColor = c.background(3);
+                        }
+                        filmWritePanel.setBackground(filmWriteColor);
+                        filmWriteLabel.setBackground(filmWriteColor);
                     } catch (FileNotFoundException fileNotFoundException) {
                         fileNotFoundException.printStackTrace();
                     }
                 } else {
-                    saveCompleted.setText("Не хватает данных");
+                    filmWriteLabel.setText(s.save(2));
                 }
             }
         });
@@ -69,33 +91,40 @@ public class Window extends JFrame{
         filmSearchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchedFilms.setVisible(true);
-                searchPanel.setVisible(true);
-                saveCompleted.setVisible(false);
+                setFilmSearch(true);
 
-                Film[] searchedF = Service.searchFilms(
-                        filmName.getText(),
+                Film[] searchedF = service.searchFilms(
+                        filmNameTextField.getText(),
                         (String) filmGenreBox.getSelectedItem(),
-                        filmIsLookedRButton.isSelected(),
-                        (String) filmFeel.getSelectedItem()
+                        filmLookedRButton.isSelected(),
+                        (String) filmFeelBox.getSelectedItem()
                 );
-                //String[] films = Service.filmArrayToStringArrayForJTable(searchedF);
-                String[][] verticalFilms = Service.filmArrayToVerticalStringArrayForJTable(searchedF);
+                String[][] verticalFilms = service.filmArrayToStringMatrix(searchedF);
                 JTableUtils.writeArrayToJTable(searchedFilms, verticalFilms);
             }
         });
 
-        filmIsLookedRButton.addActionListener(new ActionListener() {
+        filmLookedRButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (filmIsLookedRButton.isSelected()) {
-                    filmFeel.setEnabled(true);
-                    feelLabel.setEnabled(true);
+                if (filmLookedRButton.isSelected()) {
+                    filmFeelBox.setEnabled(true);
+                    filmFeelLabel.setEnabled(true);
                 } else {
-                    filmFeel.setEnabled(false);
-                    feelLabel.setEnabled(false);
+                    filmFeelBox.setEnabled(false);
+                    filmFeelLabel.setEnabled(false);
                 }
             }
         });
+    }
+
+    private void setFilmSearch(boolean isSearch) {
+        if (isSearch) {
+            filmWritePanel.setVisible(false);
+            filmWriteLabel.setVisible(false);
+        } else {
+            filmWriteLabel.setVisible(true);
+            filmWritePanel.setVisible(true);
+        }
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Program.Window">
-  <grid id="27dc6" binding="contentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="21" width="567" height="399"/>
+      <xy x="20" y="21" width="623" height="399"/>
     </constraints>
     <properties>
       <background color="-2818189"/>
@@ -49,11 +49,11 @@
             </properties>
             <border type="none"/>
             <children>
-              <grid id="63188" binding="addFilm" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="63188" binding="filmContentPanel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="5" left="5" bottom="5" right="5"/>
                 <constraints>
                   <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="170" height="210"/>
+                    <preferred-size width="440" height="440"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -67,190 +67,23 @@
                   <title-color color="-16777216"/>
                 </border>
                 <children>
-                  <component id="230db" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="147" height="16"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <foreground color="-16777216"/>
-                      <labelFor value="b3d33"/>
-                      <text value="Жанр:"/>
-                    </properties>
-                  </component>
-                  <component id="a329" class="javax.swing.JLabel" binding="feelLabel">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="147" height="16"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <enabled value="false"/>
-                      <foreground color="-16777216"/>
-                      <labelFor value="c6d3e"/>
-                      <text value="Впечатление:"/>
-                    </properties>
-                  </component>
-                  <component id="c6d3e" class="javax.swing.JComboBox" binding="filmFeel">
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="25"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <background color="-2818189"/>
-                      <editable value="false"/>
-                      <enabled value="false"/>
-                      <foreground color="-16777216"/>
-                      <model>
-                        <item value="Выбрать..."/>
-                        <item value="Офигенно"/>
-                        <item value="Классно"/>
-                        <item value="Хорошо"/>
-                        <item value="Средне"/>
-                        <item value="Более-менее"/>
-                        <item value="Такое себе"/>
-                        <item value="Больше не смотреть"/>
-                        <item value="на 1 раз"/>
-                      </model>
-                    </properties>
-                  </component>
-                  <component id="b3d33" class="javax.swing.JComboBox" binding="filmGenreBox">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="25"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <background color="-2818189"/>
-                      <foreground color="-16777216"/>
-                      <model>
-                        <item value="Выбрать..."/>
-                        <item value="Драма"/>
-                        <item value="Комедия"/>
-                        <item value="Хоррор"/>
-                        <item value="Экшн"/>
-                      </model>
-                    </properties>
-                  </component>
-                  <component id="dd3d7" class="javax.swing.JTextField" binding="filmName">
-                    <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="25"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <background color="-2818189"/>
-                      <foreground color="-16777216"/>
-                      <text value=""/>
-                    </properties>
-                  </component>
-                  <component id="5fea0" class="javax.swing.JRadioButton" binding="filmIsLookedRButton">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="300" height="25"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <background color="-1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Смотрел"/>
-                    </properties>
-                  </component>
-                  <component id="3adcd" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                        <preferred-size width="147" height="16"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <foreground color="-16777216"/>
-                      <labelFor value="dd3d7"/>
-                      <text value="Название фильма:"/>
-                    </properties>
-                  </component>
-                  <grid id="63067" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="4eebe" binding="filmSearchedPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="1" use-parent-layout="false"/>
+                      <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="-1" height="150"/>
+                      </grid>
                     </constraints>
                     <properties>
-                      <alignmentX value="0.5"/>
-                      <alignmentY value="0.5"/>
-                      <autoscrolls value="false"/>
                       <background color="-1"/>
+                      <visible value="true"/>
                     </properties>
                     <border type="none"/>
                     <children>
-                      <grid id="70afa" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <background color="-1"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="4075e" class="javax.swing.JButton" binding="filmSaveButton">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                <preferred-size width="-1" height="25"/>
-                              </grid>
-                            </constraints>
-                            <properties>
-                              <background color="-2818189"/>
-                              <foreground color="-16777216"/>
-                              <text value="Сохранить"/>
-                            </properties>
-                          </component>
-                          <component id="a4ea0" class="javax.swing.JButton" binding="filmSearchButton">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                <preferred-size width="-1" height="25"/>
-                              </grid>
-                            </constraints>
-                            <properties>
-                              <background color="-2818189"/>
-                              <foreground color="-16777216"/>
-                              <horizontalTextPosition value="11"/>
-                              <text value="Поиск"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
-                      <grid id="93486" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="24" height="45"/>
-                          </grid>
-                        </constraints>
-                        <properties>
-                          <background color="-1"/>
-                          <foreground color="-16777216"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="bea2" class="javax.swing.JLabel" binding="saveCompleted">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                <preferred-size width="-1" height="25"/>
-                              </grid>
-                            </constraints>
-                            <properties>
-                              <background color="-1"/>
-                              <foreground color="-16777216"/>
-                              <text value=""/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
                       <grid id="a9009" binding="searchPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-2818189"/>
@@ -280,6 +113,218 @@
                               <showVerticalLines value="false"/>
                               <updateSelectionOnSort value="true"/>
                               <visible value="false"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="e58f6" binding="filmDataPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                      <foreground color="-16777216"/>
+                    </properties>
+                    <border type="empty" title="Введите данные о фильме:" title-justification="2" title-position="2">
+                      <font/>
+                      <title-color color="-16777216"/>
+                      <color color="-1"/>
+                    </border>
+                    <children>
+                      <grid id="a4a88" binding="filmAddDataPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                            <preferred-size width="420" height="100"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="3adcd" class="javax.swing.JLabel" binding="filmNameLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <foreground color="-16777216"/>
+                              <labelFor value="dd3d7"/>
+                              <text value="Название фильма:"/>
+                            </properties>
+                          </component>
+                          <component id="dd3d7" class="javax.swing.JTextField" binding="filmNameTextField">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <minimum-size width="300" height="25"/>
+                                <preferred-size width="300" height="25"/>
+                                <maximum-size width="300" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-2818189"/>
+                              <foreground color="-16777216"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <component id="230db" class="javax.swing.JLabel" binding="filmGenreLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <foreground color="-16777216"/>
+                              <labelFor value="b3d33"/>
+                              <text value="Жанр:"/>
+                            </properties>
+                          </component>
+                          <component id="b3d33" class="javax.swing.JComboBox" binding="filmGenreBox">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <minimum-size width="300" height="25"/>
+                                <preferred-size width="300" height="25"/>
+                                <maximum-size width="300" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-2818189"/>
+                              <foreground color="-16777216"/>
+                              <model>
+                                <item value="Выбрать..."/>
+                                <item value="Драма"/>
+                                <item value="Комедия"/>
+                                <item value="Хоррор"/>
+                                <item value="Экшн"/>
+                              </model>
+                            </properties>
+                          </component>
+                          <component id="a329" class="javax.swing.JLabel" binding="filmFeelLabel">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <enabled value="false"/>
+                              <foreground color="-16777216"/>
+                              <labelFor value="c6d3e"/>
+                              <text value="Впечатление:"/>
+                            </properties>
+                          </component>
+                          <component id="c6d3e" class="javax.swing.JComboBox" binding="filmFeelBox">
+                            <constraints>
+                              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <minimum-size width="300" height="25"/>
+                                <preferred-size width="300" height="25"/>
+                                <maximum-size width="300" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-2818189"/>
+                              <editable value="false"/>
+                              <enabled value="false"/>
+                              <foreground color="-16777216"/>
+                              <model>
+                                <item value="Выбрать..."/>
+                                <item value="Офигенно"/>
+                                <item value="Классно"/>
+                                <item value="Хорошо"/>
+                                <item value="Средне"/>
+                                <item value="Более-менее"/>
+                                <item value="Такое себе"/>
+                                <item value="Больше не смотреть"/>
+                                <item value="на 1 раз"/>
+                              </model>
+                            </properties>
+                          </component>
+                          <component id="f56df" class="javax.swing.JLabel" binding="filmLookedLabel">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <foreground color="-16777216"/>
+                              <text value="Смотрел:"/>
+                            </properties>
+                          </component>
+                          <component id="5fea0" class="javax.swing.JRadioButton" binding="filmLookedRButton">
+                            <constraints>
+                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <foreground color="-16777216"/>
+                              <horizontalAlignment value="2"/>
+                              <horizontalTextPosition value="2"/>
+                              <selected value="false"/>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="70afa" binding="filmButtonsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="a4ea0" class="javax.swing.JButton" binding="filmSearchButton">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-2818189"/>
+                              <foreground color="-16777216"/>
+                              <horizontalTextPosition value="11"/>
+                              <text value="Поиск"/>
+                            </properties>
+                          </component>
+                          <component id="4075e" class="javax.swing.JButton" binding="filmSaveButton">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-2818189"/>
+                              <foreground color="-16777216"/>
+                              <text value="Сохранить"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="93486" binding="filmWritePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="24" height="45"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-11731120"/>
+                          <foreground color="-16777216"/>
+                          <visible value="false"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="bea2" class="javax.swing.JLabel" binding="filmWriteLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="-1" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                              <foreground color="-16777216"/>
+                              <text value=""/>
                             </properties>
                           </component>
                         </children>

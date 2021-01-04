@@ -1,5 +1,9 @@
 package SystemFiles.Film;
 
+import SystemFiles.Strings;
+
+import java.util.Arrays;
+
 public class Film {
     private int ID;
     private String name;
@@ -64,26 +68,32 @@ public class Film {
     public void setFeel(String feel) {
         this.feel = feel;
     }
-    public String toStringForJTable() {
-        String s = "";
-        s += name + " ";
-        if (genre.equals("Выбрать...")) {
-            s += "null ";
-        } else {
-            s += genre + " ";
-        }
+
+    public String[] toStringArray(Strings s) {
+        String[] strings = new String[4];
+        strings[0] = name;
+        strings[1] = genre;
+        strings[2] = looked ? s.looked(0): s.looked(1);
+        strings[3] = feel;
+        return strings;
+    }
+
+    public String toStringForJTable(Strings s) {
+        String string = "";
+        string += name + " ";
+        string += s.containsGenre(genre);
         if (looked) {
-            s += "смотрел ";
+            string += "просмотрено ";
             if (feel.equals("Выбрать...")) {
-                s += "null";
+                string += "null";
             } else {
-                s += feel;
+                string += feel;
             }
         } else {
-            s += "не смотрел";
+            string += "не просмотрено";
         }
 
-        return s;
+        return string;
     }
 
     @Override
